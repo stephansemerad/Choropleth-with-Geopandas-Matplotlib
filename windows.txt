@@ -1,0 +1,32 @@
+Platform: Windows 10, 64-bit Python Version: Python 3.7
+
+Dependencies (whl files needed):
+
+GDAL‑3.0.4‑cp37‑cp37m‑win_amd64.whl
+Fiona‑1.8.13‑cp37‑cp37m‑win_amd64.whl
+pyproj‑2.6.0‑cp37‑cp37m‑win_amd64.whl
+Rtree‑0.9.4‑cp37‑cp37m‑win_amd64.whl
+Steps:
+
+Download the files that match the platform and Python version from
+
+https://www.lfd.uci.edu/~gohlke/pythonlibs/
+
+Install packages (stick with the order)
+
+a) C:\Users...\Python37\Scripts>pip3.7 install C:...\GDAL‑3.0.4‑cp37‑cp37m‑win_amd64.whl
+
+b) C:\Users...\Python37\Scripts>pip3.7 install C:...\Fiona‑1.8.13‑cp37‑cp37m‑win_amd64.whl
+
+c) C:\Users...\Python37\Scripts>pip3.7 install C:...\pyproj‑2.6.0‑cp37‑cp37m‑win_amd64.whl
+
+d) C:\Users...\Python37\Scripts>pip3.7 install C:...\Rtree‑0.9.4‑cp37‑cp37m‑win_amd64.whl
+
+Given no errros, now it's good to go:
+C:\Users...\Python37\Scripts>pip3.7.exe install geopandas
+
+Test it using IDEL 3.7.4
+
+import geopandas as pdg
+
+geopandas==0.10, earthpy==0.9.4 and shapely==1.7.0. 

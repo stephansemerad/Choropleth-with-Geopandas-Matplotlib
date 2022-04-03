@@ -28,8 +28,7 @@ if __name__ == '__main__':
     COLORS                  = ['#30ace8','#2b9ad0','#2689b9','#2178a2','#1c678b','#185674','#13445c','#0e3345','#09222e']
 
 
-    # sns.set_style('whitegrid')
-
+    sns.set_style('whitegrid')
 
     sf      = shp.Reader(SHAPE_PATH)
     
