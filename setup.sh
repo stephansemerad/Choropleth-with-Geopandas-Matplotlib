@@ -1,5 +1,8 @@
 # # idea from 
 # https://medium.com/@barua.aindriya/visualize-data-on-a-choropleth-map-with-geopandas-and-matplotlib-924cedd8e9cb
+# https://towardsdatascience.com/mapping-geograph-data-in-python-610a963d2d7f
+# https://github.com/Mjrovai/Python4DS/tree/master/20_Mapping_Covid19_Brazil
+
 
 # 1. Set Up Virtual Env
 python -m venv venv      
