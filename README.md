@@ -31,4 +31,4 @@ if __name__ == '__main__':
 
 ```
 
-![](https://github.com/stephansemerad/Choropleth-with-Geopandas-Matplotlib/master/imgs/result.png)
+![](https://github.com/stephansemerad/Choropleth-with-Geopandas-Matplotlib/raw/main/imgs/result.png)
