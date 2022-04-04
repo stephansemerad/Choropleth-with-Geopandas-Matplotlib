@@ -11,30 +11,19 @@ import warnings
 import shapely
 import libpysal
 
-from shapely.errors import ShapelyDeprecationWarning
-warnings.filterwarnings("ignore", category=ShapelyDeprecationWarning) 
-# https://www.lfd.uci.edu/~gohlke/pythonlibs/
+# from shapely.errors import ShapelyDeprecationWarning
+# warnings.filterwarnings("ignore", category=ShapelyDeprecationWarning) 
+# # https://www.lfd.uci.edu/~gohlke/pythonlibs/
 
     
-# sns.set_style('whitegrid')
-
+sns.set_style('whitegrid')
 DATA_PATH               = './data/data2.xlsx'
 SHAPE_PATH              = "./shapefiles/Comuna.shp"
-
-df      = pd.read_excel(DATA_PATH)
-# columns = df.columns
-# print(columns)
-
-map_df = gpd.read_file(SHAPE_PATH)
-# map_df.plot()
-
-
+df                      = pd.read_excel(DATA_PATH)
+map_df                  = gpd.read_file(SHAPE_PATH)
 
 merged = map_df.set_index('NOM_COMUNA').join(df.set_index('NOM_COMUNA'))
-
-fig, ax = plt.subplots(1, figsize=(10, 5))
-
-
+fig, ax = plt.subplots(1, figsize=(15,10))
 
 # ax.axis('off')
 ax.set_xticks([])
@@ -65,43 +54,29 @@ merged.plot(column='INMIGRANTES',
 
 merged.plot(column='INMIGRANTES',
             cmap=new_cmap,
-            scheme='QUANTILES', k=8,
+            scheme='QUANTILES', k=10,
             # linewidth=0.9,
             ax=ax,
             # edgecolor='1',
-            legend=True, 
+            # legend=True, 
             missing_kwds={"color": "lightgrey", "label": "Missing values",},
-            legend_kwds={'loc': 'center left', 'bbox_to_anchor':(1,0.5)}
+            # legend_kwds={'loc': 'center left', 'bbox_to_anchor':(1,0.5)}
             
             )
 
 
-
-# ax = merged.plot(column='INMIGRANTES', scheme='QUANTILES', k=4, \
-#              cmap='BuPu', legend=True,
-#              legend_kwds={'loc': 'center left', 'bbox_to_anchor':(1,0.5)})
+data = merged.index
+districts = [i.title() for i in data]
 
 
-# labels = [t.get_text() for t in ax.get_legend().get_texts()]
-# q4 = mapclassify.Quantiles(df.INMIGRANTES, k=4)
-# labels == q4.get_legend_classes()
-
-        
-plt.title('öoghbögubh Title', loc='left')
-plt.savefig('result7.png')
+merged['coords'] = merged['geometry'].apply(lambda x: x.representative_point().coords[:])
+merged['coords'] = [coords[0] for coords in merged['coords']]
+for index, row in merged.iterrows():
+    plt.annotate(text=index, xy=row['coords'], horizontalalignment='center', size=5, color='black')
 
 
+plt.title('öoghbögubh Title', loc='left', size="10")
+plt.xlabel('source:  https://www.lfd.uci.edu/~gohlke/pythonlibs/', loc="left", size="8")
+plt.savefig('result.png')
 
-
-import matplotlib.pyplot as plt
-
-#define x and y
-x = [1, 4, 10]
-y = [5, 9, 27]
-
-#create plot of x and y
-plt.plot(x, y)
-
-#add title
-plt.title('My Title', loc='left')
 
